@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fernando Urdaneta — Consultor Comercial & Ing. en Sistemas</title>
+    <style>
+        :root {
+            --red:    #d62246;
+            --red2:   #a91b38;
+            --navy:   #0d1b2a;
+            --navy2:  #1b2d45;
+            --gray:   #4a5568;
+            --light:  #f7f9fc;
+            --white:  #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: var(--gray);
+            background: var(--white);
+            line-height: 1.6;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 6%;
+            height: 64px;
+            background: rgba(13, 27, 42, 0.96);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .nav-logo {
+            font-size: 18px;
+            font-weight: 800;
+            color: white;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-logo span { color: var(--red); }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 12.5px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color .2s;
+        }
+
+        .nav-links a:hover { color: var(--red); }
+
+        /* ── HERO ── */
+        #hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--navy) 0%, #0f2a42 55%, #122840 100%);
+            display: flex;
+            align-items: center;
+            padding: 100px 6% 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: -120px; right: -120px;
+            width: 550px; height: 550px;
+            background: radial-gradient(circle, rgba(214,34,70,0.12) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        #hero::after {
+            content: '';
+            position: absolute;
+            bottom: -80px; left: -80px;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(214,34,70,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(214,34,70,0.2);
+            border: 1px solid rgba(214,34,70,0.4);
+            color: #f47090;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        .hero-name {
+            font-size: clamp(38px, 5vw, 62px);
+            font-weight: 900;
+            color: white;
+            line-height: 1.0;
+            letter-spacing: -1.5px;
+            margin-bottom: 12px;
+        }
+
+        .hero-name span { color: var(--red); }
+
+        .hero-title {
+            font-size: 15px;
+            color: rgba(255,255,255,0.6);
+            font-weight: 400;
+            margin-bottom: 24px;
+            letter-spacing: 0.3px;
+        }
+
+        .hero-desc {
+            font-size: 14.5px;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.8;
+            max-width: 520px;
+            margin-bottom: 36px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--red), var(--red2));
+            color: white;
+            padding: 13px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: transform .2s, box-shadow .2s;
+            box-shadow: 0 4px 20px rgba(214,34,70,0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(214,34,70,0.45);
+        }
+
+        .btn-outline {
+            border: 1.5px solid rgba(255,255,255,0.25);
+            color: rgba(255,255,255,0.8);
+            padding: 13px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: border-color .2s, color .2s;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--red);
+            color: white;
+        }
+
+        /* Avatar card */
+        .hero-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 36px 28px;
+            text-align: center;
+            backdrop-filter: blur(8px);
+        }
+
+        .avatar-circle {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--red), #7b1428);
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            font-weight: 900;
+            color: white;
+            letter-spacing: -2px;
+            border: 3px solid rgba(255,255,255,0.15);
+        }
+
+        .card-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 4px;
+        }
+
+        .card-sub {
+            font-size: 11px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 20px;
+        }
+
+        .card-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .stat {
+            background: rgba(255,255,255,0.06);
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        .stat-num {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--red);
+            line-height: 1;
+            margin-bottom: 3px;
+        }
+
+        .stat-label {
+            font-size: 9px;
+            color: rgba(255,255,255,0.45);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        /* ── SECTIONS ── */
+        section { padding: 86px 6%; }
+
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        .sec-eyebrow {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--red);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .sec-title {
+            font-size: clamp(26px, 3.5vw, 38px);
+            font-weight: 800;
+            color: var(--navy);
+            letter-spacing: -0.8px;
+            margin-bottom: 14px;
+            line-height: 1.1;
+        }
+
+        .sec-desc {
+            font-size: 14px;
+            color: #718096;
+            max-width: 520px;
+            line-height: 1.75;
+        }
+
+        .divider {
+            width: 44px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--red), transparent);
+            border-radius: 2px;
+            margin: 16px 0 36px;
+        }
+
+        /* ── SOBRE MÍ ── */
+        #sobre { background: var(--light); }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 14px;
+            line-height: 1.85;
+            color: var(--gray);
+        }
+
+        .about-text p { margin-bottom: 16px; }
+
+        .about-items {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .about-item {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            border-left: 3px solid var(--red);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .about-item-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .about-item-title {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        .about-item-text {
+            font-size: 11.5px;
+            color: #8898aa;
+            line-height: 1.5;
+        }
+
+        /* ── EXPERIENCIA ── */
+        #experiencia { background: white; }
+
+        .timeline {
+            position: relative;
+            padding-left: 28px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 6px; top: 8px; bottom: 8px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--red), rgba(214,34,70,0.1));
+        }
+
+        .tl-item {
+            position: relative;
+            margin-bottom: 36px;
+            background: var(--light);
+            border-radius: 12px;
+            padding: 22px 24px;
+            border: 1px solid #edf0f5;
+            transition: box-shadow .2s, transform .2s;
+        }
+
+        .tl-item:hover {
+            box-shadow: 0 6px 30px rgba(0,0,0,0.08);
+            transform: translateX(4px);
+        }
+
+        .tl-item::before {
+            content: '';
+            position: absolute;
+            left: -25px;
+            top: 26px;
+            width: 12px;
+            height: 12px;
+            background: var(--red);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px rgba(214,34,70,0.2);
+        }
+
+        .tl-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+
+        .tl-role {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .tl-badge {
+            font-size: 10px;
+            background: rgba(214,34,70,0.1);
+            color: var(--red);
+            padding: 3px 11px;
+            border-radius: 20px;
+            font-weight: 600;
+            border: 1px solid rgba(214,34,70,0.2);
+        }
+
+        .tl-company {
+            font-size: 12px;
+            color: #8898aa;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .tl-bullets { list-style: none; }
+
+        .tl-bullets li {
+            font-size: 12.5px;
+            color: var(--gray);
+            padding-left: 16px;
+            position: relative;
+            margin-bottom: 5px;
+            line-height: 1.55;
+        }
+
+        .tl-bullets li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--red);
+            font-size: 10px;
+            top: 2px;
+        }
+
+        /* ── HABILIDADES ── */
+        #habilidades { background: var(--navy); }
+
+        #habilidades .sec-title { color: white; }
+        #habilidades .sec-desc  { color: rgba(255,255,255,0.5); }
+        #habilidades .sec-eyebrow { color: #f47090; }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 24px;
+            transition: background .2s, transform .2s;
+        }
+
+        .skill-card:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-3px);
+        }
+
+        .skill-card-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .skill-card-title {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 6px;
+        }
+
+        .skill-card-text {
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.6;
+        }
+
+        .skill-bar-outer {
+            height: 5px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            margin-top: 14px;
+            overflow: hidden;
+        }
+
+        .skill-bar-inner {
+            height: 100%;
+            background: linear-gradient(90deg, var(--red), #f04d6e);
+            border-radius: 3px;
+        }
+
+        /* Soft skills tags */
+        .soft-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 36px;
+        }
+
+        .soft-tag {
+            background: rgba(214,34,70,0.15);
+            border: 1px solid rgba(214,34,70,0.3);
+            color: rgba(255,255,255,0.8);
+            font-size: 12px;
+            padding: 7px 18px;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: background .2s;
+        }
+
+        .soft-tag:hover { background: rgba(214,34,70,0.3); }
+
+        /* ── CONTACTO ── */
+        #contacto { background: var(--light); }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-items { display: flex; flex-direction: column; gap: 18px; }
+
+        .contact-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .contact-icon-box {
+            width: 46px;
+            height: 46px;
+            background: linear-gradient(135deg, var(--red), var(--red2));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 14px rgba(214,34,70,0.3);
+        }
+
+        .contact-info-label {
+            font-size: 10.5px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #8898aa;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .contact-info-value {
+            font-size: 14px;
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        /* Form */
+        .form { display: flex; flex-direction: column; gap: 14px; }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+        .form input,
+        .form textarea {
+            width: 100%;
+            padding: 13px 16px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 13px;
+            font-family: inherit;
+            color: var(--navy);
+            background: white;
+            transition: border-color .2s, box-shadow .2s;
+            outline: none;
+        }
+
+        .form input:focus,
+        .form textarea:focus {
+            border-color: var(--red);
+            box-shadow: 0 0 0 3px rgba(214,34,70,0.1);
+        }
+
+        .form textarea { resize: vertical; min-height: 120px; }
+
+        .form-btn {
+            background: linear-gradient(135deg, var(--red), var(--red2));
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            transition: transform .2s, box-shadow .2s;
+            box-shadow: 0 4px 18px rgba(214,34,70,0.3);
+            align-self: flex-start;
+        }
+
+        .form-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(214,34,70,0.4);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--navy);
+            color: rgba(255,255,255,0.45);
+            text-align: center;
+            padding: 28px 6%;
+            font-size: 12px;
+        }
+
+        footer span { color: var(--red); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .hero-inner        { grid-template-columns: 1fr; }
+            .hero-card         { display: none; }
+            .about-grid        { grid-template-columns: 1fr; }
+            .contact-grid      { grid-template-columns: 1fr; }
+            .form-row          { grid-template-columns: 1fr; }
+            .nav-links         { display: none; }
+            .about-items       { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-logo">Fernando <span>U.</span></div>
+    <ul class="nav-links">
+        <li><a href="#sobre">Sobre mí</a></li>
+        <li><a href="#experiencia">Experiencia</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+    <div class="hero-inner">
+        <div>
+            <div class="hero-tag">Disponible para nuevos proyectos</div>
+            <h1 class="hero-name">Fernando<br><span>Urdaneta</span></h1>
+            <p class="hero-title">Ingeniero en Sistemas &nbsp;·&nbsp; Consultor Comercial &nbsp;·&nbsp; Supervisor de Operaciones</p>
+            <p class="hero-desc">
+                Profesional orientado a resultados con más de 6 años de experiencia en ventas automotrices, gestión de intangibles y liderazgo de equipos en retail masivo. Combino visión tecnológica con estrategia comercial para generar impacto real.
+            </p>
+            <div class="hero-btns">
+                <a href="#contacto" class="btn-primary">Contáctame</a>
+                <a href="#experiencia" class="btn-outline">Ver trayectoria</a>
+            </div>
+        </div>
+
+        <div class="hero-card">
+            <div class="avatar-circle">FU</div>
+            <div class="card-name">Fernando A. Urdaneta G.</div>
+            <div class="card-sub">La Serena, Chile</div>
+            <div class="card-stats">
+                <div class="stat">
+                    <div class="stat-num">6+</div>
+                    <div class="stat-label">Años de exp.</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num">4</div>
+                    <div class="stat-label">Empresas</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num">100%</div>
+                    <div class="stat-label">Compromiso</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num">2+</div>
+                    <div class="stat-label">Rubros</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section id="sobre">
+    <div class="container">
+        <div class="sec-eyebrow">Sobre mí</div>
+        <h2 class="sec-title">Quién soy y qué ofrezco</h2>
+        <div class="divider"></div>
+
+        <div class="about-grid">
+            <div class="about-text">
+                <p>
+                    Soy Ingeniero en Sistemas egresado de la Universidad Santiago Mariño (Venezuela), con una trayectoria profesional construida en Chile que combina lo tecnológico con lo comercial.
+                </p>
+                <p>
+                    A lo largo de mi carrera he liderado equipos, gestionado carteras de clientes y analizado datos operativos para tomar decisiones estratégicas. Me caracterizo por mi dinamismo, mi capacidad para adaptarme a entornos exigentes y mi orientación permanente al logro de objetivos.
+                </p>
+                <p>
+                    Creo que la mejor venta es aquella basada en confianza y conocimiento genuino — y eso es exactamente lo que ofrezco a cada cliente y equipo con el que trabajo.
+                </p>
+            </div>
+
+            <div class="about-items">
+                <div class="about-item">
+                    <div class="about-item-icon">🚗</div>
+                    <div class="about-item-title">Ventas Automotrices</div>
+                    <div class="about-item-text">Financiamiento, adquisición vehicular y posventa</div>
+                </div>
+                <div class="about-item">
+                    <div class="about-item-icon">👥</div>
+                    <div class="about-item-title">Liderazgo de Equipos</div>
+                    <div class="about-item-text">Supervisión, entrenamiento y desarrollo de talento</div>
+                </div>
+                <div class="about-item">
+                    <div class="about-item-icon">📊</div>
+                    <div class="about-item-title">Análisis Operativo</div>
+                    <div class="about-item-text">KPIs, estadísticas y optimización de procesos</div>
+                </div>
+                <div class="about-item">
+                    <div class="about-item-icon">💡</div>
+                    <div class="about-item-title">Estrategia Comercial</div>
+                    <div class="about-item-text">Captación, fidelización y crecimiento de cartera</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EXPERIENCIA -->
+<section id="experiencia">
+    <div class="container">
+        <div class="sec-eyebrow">Trayectoria</div>
+        <h2 class="sec-title">Experiencia Profesional</h2>
+        <div class="divider"></div>
+
+        <div class="timeline">
+
+            <div class="tl-item">
+                <div class="tl-top">
+                    <div class="tl-role">Ejecutivo de Ventas Automotriz</div>
+                    <div class="tl-badge">Nov 2025 – Feb 2026</div>
+                </div>
+                <div class="tl-company">Derco Center Valentini &nbsp;·&nbsp; La Serena</div>
+                <ul class="tl-bullets">
+                    <li>Asesoramiento experto en adquisición vehicular generando experiencias de compra basadas en confianza.</li>
+                    <li>Gestión y cierre de ventas cumpliendo metas y estándares de calidad de la distribuidora.</li>
+                    <li>Fidelización de clientes mediante seguimiento continuo de posventa y gestión eficiente de cartera.</li>
+                </ul>
+            </div>
+
+            <div class="tl-item">
+                <div class="tl-top">
+                    <div class="tl-role">Ejecutivo de Ventas</div>
+                    <div class="tl-badge">Dic 2022 – Jun 2025</div>
+                </div>
+                <div class="tl-company">Callegari e Hijos LTDA. &nbsp;·&nbsp; La Serena</div>
+                <ul class="tl-bullets">
+                    <li>Captación proactiva de nuevos clientes y gestión directa de cartera para construir alta lealtad de marca.</li>
+                    <li>Orientación integral en procesos de financiamiento y adquisición vehicular.</li>
+                    <li>Superación sostenida de objetivos comerciales en cada periodo evaluado.</li>
+                </ul>
+            </div>
+
+            <div class="tl-item">
+                <div class="tl-top">
+                    <div class="tl-role">Supervisor de Operaciones</div>
+                    <div class="tl-badge">Nov 2020 – Nov 2022</div>
+                </div>
+                <div class="tl-company">Comercializadora S.A. Hites &nbsp;·&nbsp; La Serena</div>
+                <ul class="tl-bullets">
+                    <li>Liderazgo del equipo asignado asegurando el correcto desarrollo de operaciones diarias en tienda.</li>
+                    <li>Comunicación asertiva de políticas y procedimientos ante contingencias operacionales.</li>
+                    <li>Análisis de estadísticas de rendimiento para identificar oportunidades de mejora en la sucursal.</li>
+                </ul>
+            </div>
+
+            <div class="tl-item">
+                <div class="tl-top">
+                    <div class="tl-role">Supervisor Trainer</div>
+                    <div class="tl-badge">Ago 2019 – Nov 2020</div>
+                </div>
+                <div class="tl-company">Ripley Store SpA &nbsp;·&nbsp; La Serena</div>
+                <ul class="tl-bullets">
+                    <li>Atención integral a clientes resolviendo solicitudes complejas según protocolos organizacionales.</li>
+                    <li>Capacitación del personal en atributos de productos y servicios para potenciar la experiencia de compra.</li>
+                    <li>Soporte operativo transversal colaborando con diversas áreas de la compañía.</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- HABILIDADES -->
+<section id="habilidades">
+    <div class="container">
+        <div class="sec-eyebrow">Competencias</div>
+        <h2 class="sec-title">Habilidades & Conocimientos</h2>
+        <div class="divider"></div>
+
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-card-icon">🎯</div>
+                <div class="skill-card-title">Gestión Comercial</div>
+                <div class="skill-card-text">Captación, seguimiento y cierre de ventas en mercados automotriz e intangibles.</div>
+                <div class="skill-bar-outer"><div class="skill-bar-inner" style="width:93%"></div></div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-icon">🤝</div>
+                <div class="skill-card-title">Fidelización de Clientes</div>
+                <div class="skill-card-text">Construcción de relaciones a largo plazo y gestión integral de cartera.</div>
+                <div class="skill-bar-outer"><div class="skill-bar-inner" style="width:90%"></div></div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-icon">🏆</div>
+                <div class="skill-card-title">Liderazgo de Equipos</div>
+                <div class="skill-card-text">Supervisión operativa, coaching y formación de personal en entornos de alta exigencia.</div>
+                <div class="skill-bar-outer"><div class="skill-bar-inner" style="width:87%"></div></div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-icon">📈</div>
+                <div class="skill-card-title">Análisis de Datos & KPIs</div>
+                <div class="skill-card-text">Procesamiento de estadísticas operativas para generar estrategias de mejora continua.</div>
+                <div class="skill-bar-outer"><div class="skill-bar-inner" style="width:80%"></div></div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-icon">💻</div>
+                <div class="skill-card-title">Sistemas & Tecnología</div>
+                <div class="skill-card-text">Base sólida en ingeniería de sistemas, herramientas digitales y análisis estadístico.</div>
+                <div class="skill-bar-outer"><div class="skill-bar-inner" style="width:84%"></div></div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-icon">📋</div>
+                <div class="skill-card-title">Gestión Operacional</div>
+                <div class="skill-card-text">Control de procedimientos, normativas y contingencias en retail y distribución.</div>
+                <div class="skill-bar-outer"><div class="skill-bar-inner" style="width:86%"></div></div>
+            </div>
+        </div>
+
+        <div class="soft-wrap">
+            <span class="soft-tag">Comunicación Asertiva</span>
+            <span class="soft-tag">Liderazgo</span>
+            <span class="soft-tag">Creatividad</span>
+            <span class="soft-tag">Dinamismo</span>
+            <span class="soft-tag">Adaptabilidad</span>
+            <span class="soft-tag">Orientado a Resultados</span>
+            <span class="soft-tag">Pensamiento Analítico</span>
+            <span class="soft-tag">Trabajo en Equipo</span>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+    <div class="container">
+        <div class="sec-eyebrow">Contacto</div>
+        <h2 class="sec-title">Hablemos</h2>
+        <div class="divider"></div>
+
+        <div class="contact-grid">
+            <div>
+                <p class="sec-desc" style="margin-bottom:32px">
+                    ¿Tienes una oportunidad o proyecto en mente? Escríbeme y con gusto conversamos.
+                </p>
+                <div class="contact-items">
+                    <div class="contact-row">
+                        <div class="contact-icon-box">📱</div>
+                        <div>
+                            <div class="contact-info-label">Teléfono</div>
+                            <div class="contact-info-value">+56 9 3347 2359</div>
+                        </div>
+                    </div>
+                    <div class="contact-row">
+                        <div class="contact-icon-box">✉</div>
+                        <div>
+                            <div class="contact-info-label">Correo</div>
+                            <div class="contact-info-value">fernandourdaneta939@gmail.com</div>
+                        </div>
+                    </div>
+                    <div class="contact-row">
+                        <div class="contact-icon-box">📍</div>
+                        <div>
+                            <div class="contact-info-label">Ubicación</div>
+                            <div class="contact-info-value">La Serena, Chile</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <form class="form" onsubmit="handleSubmit(event)">
+                <div class="form-row">
+                    <input type="text"  placeholder="Tu nombre"  required>
+                    <input type="email" placeholder="Tu correo"  required>
+                </div>
+                <input type="text" placeholder="Asunto" required>
+                <textarea placeholder="Tu mensaje..."></textarea>
+                <button type="submit" class="form-btn">Enviar mensaje →</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 <span>Fernando Andrés Urdaneta González</span> · La Serena, Chile</p>
+</footer>
+
+<script>
+    // Smooth active nav highlight
+    const sections = document.querySelectorAll('section[id]');
+    const links    = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(s => {
+            if (window.scrollY >= s.offsetTop - 80) current = s.id;
+        });
+        links.forEach(a => {
+            a.style.color = a.getAttribute('href') === '#' + current
+                ? 'var(--red)'
+                : '';
+        });
+    });
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.style.opacity    = '1';
+                e.target.style.transform  = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.tl-item, .skill-card, .about-item').forEach(el => {
+        el.style.opacity   = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity .5s ease, transform .5s ease';
+        observer.observe(el);
+    });
+
+    // Form submit placeholder
+    function handleSubmit(e) {
+        e.preventDefault();
+        const btn = e.target.querySelector('.form-btn');
+        btn.textContent = '¡Mensaje enviado! ✓';
+        btn.style.background = 'linear-gradient(135deg,#22c55e,#16a34a)';
+        setTimeout(() => {
+            btn.textContent = 'Enviar mensaje →';
+            btn.style.background = '';
+            e.target.reset();
+        }, 3000);
+    }
+</script>
+
+</body>
+</html>
