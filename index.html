@@ -897,13 +897,13 @@
                 </div>
             </div>
 
-            <form class="form" onsubmit="handleSubmit(event)">
+            <form class="form" action="https://formspree.io/f/mvzydbae" method="POST">
                 <div class="form-row">
-                    <input type="text"  placeholder="Tu nombre"  required>
-                    <input type="email" placeholder="Tu correo"  required>
+                    <input type="text"  name="nombre"  placeholder="Tu nombre"  required>
+                    <input type="email" name="email"   placeholder="Tu correo"  required>
                 </div>
-                <input type="text" placeholder="Asunto" required>
-                <textarea placeholder="Tu mensaje..."></textarea>
+                <input type="text" name="asunto" placeholder="Asunto" required>
+                <textarea name="mensaje" placeholder="Tu mensaje..."></textarea>
                 <button type="submit" class="form-btn">Enviar mensaje →</button>
             </form>
         </div>
