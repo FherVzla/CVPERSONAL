@@ -519,6 +519,100 @@
 
         .soft-tag:hover { background: rgba(214,34,70,0.3); }
 
+        /* ── SERVICIOS ── */
+        #servicios { background: white; }
+
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 50px;
+        }
+
+        .srv-card {
+            border: 1.5px solid #edf0f5;
+            border-radius: 14px;
+            padding: 30px 26px;
+            transition: box-shadow .25s, transform .25s, border-color .25s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .srv-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--red), #f04d6e);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .3s ease;
+        }
+
+        .srv-card:hover {
+            box-shadow: 0 10px 40px rgba(0,0,0,0.09);
+            transform: translateY(-4px);
+            border-color: rgba(214,34,70,0.2);
+        }
+
+        .srv-card:hover::before { transform: scaleX(1); }
+
+        .srv-icon {
+            font-size: 36px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .srv-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 10px;
+            letter-spacing: -0.3px;
+        }
+
+        .srv-desc {
+            font-size: 12.5px;
+            color: #718096;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .srv-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .srv-tag {
+            background: var(--light);
+            color: var(--navy);
+            font-size: 10.5px;
+            font-weight: 600;
+            padding: 4px 11px;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .srv-cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            background: linear-gradient(135deg, var(--navy), var(--navy2));
+            border-radius: 14px;
+            padding: 32px 36px;
+            flex-wrap: wrap;
+        }
+
+        .srv-cta-text {
+            color: rgba(255,255,255,0.85);
+            font-size: 14.5px;
+            font-weight: 500;
+        }
+
+        .srv-cta-text strong { color: white; }
+
         /* ── CONTACTO ── */
         #contacto { background: var(--light); }
 
@@ -644,6 +738,7 @@
         <li><a href="#sobre">Sobre mí</a></li>
         <li><a href="#experiencia">Experiencia</a></li>
         <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#servicios">Servicios</a></li>
         <li><a href="#contacto">Contacto</a></li>
         <li><a href="cv.html" target="_blank" style="color:var(--red);border:1px solid var(--red);padding:5px 14px;border-radius:20px;font-size:11px;">Descargar CV</a></li>
     </ul>
@@ -858,6 +953,83 @@
             <span class="soft-tag">Orientado a Resultados</span>
             <span class="soft-tag">Pensamiento Analítico</span>
             <span class="soft-tag">Trabajo en Equipo</span>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+    <div class="container">
+        <div class="sec-eyebrow">Lo que ofrezco</div>
+        <h2 class="sec-title">Servicios Digitales</h2>
+        <div class="divider"></div>
+        <p class="sec-desc" style="margin-bottom:36px">
+            Además de mi trayectoria comercial, ofrezco soluciones digitales para personas y pequeñas empresas que quieren potenciar su presencia online y automatizar sus procesos.
+        </p>
+
+        <div class="servicios-grid">
+
+            <div class="srv-card">
+                <span class="srv-icon">🤖</span>
+                <div class="srv-title">Automatizaciones con IA</div>
+                <div class="srv-desc">
+                    Diseño flujos de trabajo inteligentes que ahorran tiempo y reducen tareas manuales repetitivas. Desde chatbots de atención al cliente hasta procesos automáticos de seguimiento y respuesta.
+                </div>
+                <div class="srv-tags">
+                    <span class="srv-tag">Chatbots</span>
+                    <span class="srv-tag">Flujos automáticos</span>
+                    <span class="srv-tag">Respuestas IA</span>
+                    <span class="srv-tag">Seguimiento de leads</span>
+                </div>
+            </div>
+
+            <div class="srv-card">
+                <span class="srv-icon">🌐</span>
+                <div class="srv-title">Creación de Páginas Web</div>
+                <div class="srv-desc">
+                    Desarrollo páginas web personales, portafolios y sitios para pequeños negocios con diseño moderno, responsivo y optimizado. Rápidas, atractivas y listas para publicar.
+                </div>
+                <div class="srv-tags">
+                    <span class="srv-tag">Portafolios</span>
+                    <span class="srv-tag">Landing pages</span>
+                    <span class="srv-tag">Sitios de negocio</span>
+                    <span class="srv-tag">Diseño responsivo</span>
+                </div>
+            </div>
+
+            <div class="srv-card">
+                <span class="srv-icon">📱</span>
+                <div class="srv-title">Presencia Digital</div>
+                <div class="srv-desc">
+                    Optimización de perfiles en LinkedIn y redes sociales, creación de contenido profesional y estrategias básicas para que tu marca personal destaque ante reclutadores y clientes.
+                </div>
+                <div class="srv-tags">
+                    <span class="srv-tag">LinkedIn</span>
+                    <span class="srv-tag">Marca personal</span>
+                    <span class="srv-tag">Perfil profesional</span>
+                    <span class="srv-tag">Contenido digital</span>
+                </div>
+            </div>
+
+            <div class="srv-card">
+                <span class="srv-icon">📊</span>
+                <div class="srv-title">Consultoría Comercial Digital</div>
+                <div class="srv-desc">
+                    Apoyo a equipos de ventas con herramientas digitales, CRM básico y análisis de datos comerciales para mejorar el seguimiento de clientes y el cierre de oportunidades.
+                </div>
+                <div class="srv-tags">
+                    <span class="srv-tag">CRM</span>
+                    <span class="srv-tag">Análisis de ventas</span>
+                    <span class="srv-tag">Estrategia digital</span>
+                    <span class="srv-tag">Reportes</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="srv-cta">
+            <span class="srv-cta-text"><strong>¿Tienes un proyecto en mente?</strong> Conversemos y buscamos la mejor solución para ti.</span>
+            <a href="#contacto" class="btn-primary">Solicitar información →</a>
         </div>
     </div>
 </section>
